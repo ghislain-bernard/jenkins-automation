@@ -24,7 +24,7 @@ pipeline {
                 sh 'echo "${REPORT_EMAIL}"'
                 sshagent(credentials: ['jenkins.homeware.ovh']) {
                     sh 'ssh user@caen.homeware.ovh hostnamectl hostname'
-                    sh 'ssh user@caen.homeware.ovh unbuffer sudo bash /opt/jenkins/${JOB_NAME}.sh'
+                    sh 'ssh user@caen.homeware.ovh unbuffer bash /opt/jenkins/${JOB_NAME}.sh'
                 }
             }
         }
