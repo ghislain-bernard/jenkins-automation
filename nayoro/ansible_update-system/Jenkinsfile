@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+    environment {
+        REPORT_EMAIL = sh(returnStdout: true, script:'echo -n ${BUILD_USER_EMAIL:-ghislain.bernard@gmail.com}')
+    }
+    options {
+        skipDefaultCheckout()
+        timeout(unit: 'MINUTES', time: 30)
+    }
+    stages {
+        stage('clean') {
+            steps {
+                cleanWs()
+            }
+        }
+        stage('clone') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('build') {
+            steps {
+                sh 'env | sort'
+                sh 'echo "${REPORT_EMAIL}"'
+                sshagent(credentials: ['jenkins.homeware.ovh']) {
+                    sh 'ssh user@caen.homeware.ovh hostnamectl hostname'
+                    sh 'ssh user@caen.homeware.ovh unbuffer bash /opt/jenkins/${JOB_NAME}.sh'
+                }
+            }
+        }
+    }
+    post {
+        aborted {
+            mail body: "ABORTED\n\n${BUILD_URL}", subject: "${JOB_NAME}#${BUILD_NUMBER} [FAILURE]",
+                to: "$REPORT_EMAIL"
+        }
+        failure {
+            mail body: "FAILURE\n\n${BUILD_URL}", subject: "${JOB_NAME}#${BUILD_NUMBER} [FAILURE]",
+                to: "$REPORT_EMAIL"
+        }
+    }
+}
