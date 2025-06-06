@@ -12,7 +12,6 @@ sukumo/ansible_update-system/Jenkinsfile
 sukumo/borg_backup-system/Jenkinsfile
 tanabe/ansible_update-system/Jenkinsfile
 tanabe/borg_backup-system/Jenkinsfile
-yamaga/ansible_update-system/Jenkinsfile
 jenkins.webp
 .files.txt
 README.md
