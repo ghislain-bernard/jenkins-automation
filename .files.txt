@@ -7,6 +7,7 @@ kainan/ansible_update-system/Jenkinsfile
 namiwa/ansible_update-system/Jenkinsfile
 naruto/ansible_update-system/Jenkinsfile
 naruto/borg_backup-system/Jenkinsfile
+naruto/packer_build-source/Jenkinsfile
 nayoro/ansible_update-system/Jenkinsfile
 sukumo/ansible_update-system/Jenkinsfile
 sukumo/borg_backup-system/Jenkinsfile
