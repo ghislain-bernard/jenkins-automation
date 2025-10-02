@@ -12,8 +12,6 @@ naruto/packer_build-source/Jenkinsfile
 nayoro/ansible_update-system/Jenkinsfile
 sukumo/ansible_update-system/Jenkinsfile
 sukumo/borg_backup-system/Jenkinsfile
-tanabe/ansible_update-system/Jenkinsfile
-tanabe/borg_backup-system/Jenkinsfile
 jenkins.webp
 .files.txt
 README.md
